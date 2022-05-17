@@ -6,7 +6,7 @@ namespace P01.ReverseString
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           
         }
     }
 }
