@@ -9,13 +9,26 @@ namespace P03.SimpleCalculator
     {
         static void Main(string[] args)
         {
-            string expr = Console.ReadLine();
-            Stack<int> stack = new Stack<int>();
-            for (int i = 0; i < expr.Length; i++)
+            string[] expr = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var reversed = expr.Reverse().ToArray();
+            Stack<string> stack = new Stack<string>();
+            for (int i = 0; i < reversed.Length; i++)
             {
-                
+                stack.Push(reversed[i]);
             }
-
+            for (int i = 0; i < reversed.Length; i++)
+            {
+                string plusOrMinus = string.Empty;
+                if (expr[i] == "+" || expr[i] == "-")
+                {
+                     plusOrMinus = stack.Pop();
+                }
+                else
+                {
+                    int num = int.Parse(plusOrMinus + stack.Pop());
+                }
+            }
         }
     }
 }
