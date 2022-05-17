@@ -1,0 +1,16 @@
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\bin\Debug\net5.0\P03.SimpleCalculator.exe
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\bin\Debug\net5.0\P03.SimpleCalculator.deps.json
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\bin\Debug\net5.0\P03.SimpleCalculator.runtimeconfig.json
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\bin\Debug\net5.0\P03.SimpleCalculator.runtimeconfig.dev.json
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\bin\Debug\net5.0\P03.SimpleCalculator.dll
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\bin\Debug\net5.0\P03.SimpleCalculator.pdb
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\P03.SimpleCalculator.csproj.AssemblyReference.cache
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\P03.SimpleCalculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\P03.SimpleCalculator.AssemblyInfoInputs.cache
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\P03.SimpleCalculator.AssemblyInfo.cs
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\P03.SimpleCalculator.csproj.CoreCompileInputs.cache
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\P03.SimpleCalculator.dll
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\refint\P03.SimpleCalculator.dll
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\P03.SimpleCalculator.pdb
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\P03.SimpleCalculator.genruntimeconfig.cache
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P03.SimpleCalculator\obj\Debug\net5.0\ref\P03.SimpleCalculator.dll

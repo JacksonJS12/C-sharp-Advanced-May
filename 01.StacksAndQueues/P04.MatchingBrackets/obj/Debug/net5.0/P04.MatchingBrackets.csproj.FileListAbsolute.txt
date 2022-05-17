@@ -1,0 +1,16 @@
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\bin\Debug\net5.0\P04.MatchingBrackets.exe
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\bin\Debug\net5.0\P04.MatchingBrackets.deps.json
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\bin\Debug\net5.0\P04.MatchingBrackets.runtimeconfig.json
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\bin\Debug\net5.0\P04.MatchingBrackets.runtimeconfig.dev.json
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\bin\Debug\net5.0\P04.MatchingBrackets.dll
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\bin\Debug\net5.0\P04.MatchingBrackets.pdb
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\P04.MatchingBrackets.csproj.AssemblyReference.cache
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\P04.MatchingBrackets.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\P04.MatchingBrackets.AssemblyInfoInputs.cache
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\P04.MatchingBrackets.AssemblyInfo.cs
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\P04.MatchingBrackets.csproj.CoreCompileInputs.cache
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\P04.MatchingBrackets.dll
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\refint\P04.MatchingBrackets.dll
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\P04.MatchingBrackets.pdb
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\P04.MatchingBrackets.genruntimeconfig.cache
+C:\Users\ricky\source\repos\C-sharp-Advanced-May\01.StacksAndQueues\P04.MatchingBrackets\obj\Debug\net5.0\ref\P04.MatchingBrackets.dll
