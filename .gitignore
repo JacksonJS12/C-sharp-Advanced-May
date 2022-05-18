@@ -1,7 +1,8 @@
-/01.StacksAndQueues/P01.ReverseString/bin
-/01.StacksAndQueues/P01.ReverseString/obj
-/01.StacksAndQueues/P01.ReverseString/.vs
-/02.ExerciseStacksAndQueues/P01.BasicStackOperations/bin
-/02.ExerciseStacksAndQueues/P01.BasicStackOperations/obj
-/02.ExerciseStacksAndQueues/.vs
-/02.ExerciseStacksAndQueues/02.ExerciseStacksAndQueues.sln
+/bin
+/obj
+/.vs
+/bin
+/obj
+/.vs
+/02.ExerciseStacksAndQueues.sln
+/.gitignore
