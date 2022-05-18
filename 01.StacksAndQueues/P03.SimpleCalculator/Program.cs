@@ -19,14 +19,25 @@ namespace P03.SimpleCalculator
             }
             for (int i = 0; i < reversed.Length; i++)
             {
+                int sum = 0;
                 string plusOrMinus = string.Empty;
                 if (expr[i] == "+" || expr[i] == "-")
                 {
-                     plusOrMinus = stack.Pop();
+                    plusOrMinus = stack.Pop();
                 }
                 else
                 {
-                    int num = int.Parse(plusOrMinus + stack.Pop());
+                    int lastNum = 0;
+                    if (!(plusOrMinus == string.Empty))
+                    {
+                        sum = lastNum + int.Parse(stack.Pop());
+                         lastNum = int.Parse(plusOrMinus + stack.Pop());
+                    }
+                    else
+                    {
+                         lastNum = int.Parse(stack.Pop());
+                    }
+                  
                 }
             }
         }
