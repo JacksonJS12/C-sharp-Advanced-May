@@ -7,7 +7,7 @@ namespace P06.SongsQueue
     {
         static void Main(string[] args)
         {
-            Queue<string> songsQueue = new Queue<string>(Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries));
+            Queue<string> songsQueue = new Queue<string>(Console.ReadLine().Split(", "));
 
             
             while (songsQueue.Count > 0)
@@ -32,7 +32,7 @@ namespace P06.SongsQueue
                 }
                 else if(cmd == "Show")
                 {
-                    Console.Write(string.Join(", ", songsQueue));
+                    Console.WriteLine(string.Join(", ", songsQueue));
                 }
                
             }
