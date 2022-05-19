@@ -25,12 +25,12 @@ namespace P01.BasicStackOperations
 
             for (int i = 0; i < nToPush; i++)
             {
-                queue.Push(numberList[i]);
+                queue.Enqueue(numberList[i]);
             }
 
             for (int i = 0; i < sToPop; i++)
             {
-                queue.Pop();
+                queue.Dequeue();
             }
 
             if (queue.Count == 0)
