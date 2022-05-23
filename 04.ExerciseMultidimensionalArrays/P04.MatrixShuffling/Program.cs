@@ -25,7 +25,34 @@ namespace P04.MatrixShuffling
             string cmd = Console.ReadLine();
             while (cmd != "END")
             {
+                if (!Validate(cmd, rowsCount, columnsCount))
+                {
+                    Console.WriteLine("Invalid input!");
+                    cmd = Console.ReadLine();
+                    continue;
+                }
+                else
+                {
+                    int row1 = int.Parse(cmd.Split()[1]);
+                    int col1 = int.Parse(cmd.Split()[2]);
+                    int row2 = int.Parse(cmd.Split()[3]);
+                    int col2 = int.Parse(cmd.Split()[4]);
 
+                    string element1 = matrix[row1, col1];
+                    string element2 = matrix[row2, col2];
+
+                    matrix[row2, col2] = element1;
+                    matrix[row1, col1] = element2;
+
+                    for (int row = 0; row < rowsCount; row++)
+                    {
+                        for (int col = 0; col < columnsCount; col++)
+                        {
+                            Console.Write(matrix[row, col] + " ");
+                        }
+                        Console.WriteLine();
+                    }
+                }
 
                 cmd = Console.ReadLine();
             }
