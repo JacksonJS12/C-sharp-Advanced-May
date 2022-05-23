@@ -25,14 +25,14 @@ namespace P04.MatrixShuffling
             string cmd = Console.ReadLine();
             while (cmd != "END")
             {
-                
+
 
                 cmd = Console.ReadLine();
             }
 
         }
 
-        static bool Validate(string cmd)
+        static bool Validate(string cmd, int rowsCount, int colsCount)
         {
             string[] cmdParts = cmd
                     .Split(' ', StringSplitOptions.RemoveEmptyEntries)
@@ -44,6 +44,20 @@ namespace P04.MatrixShuffling
                 int col1 = int.Parse(cmdParts[2]);
                 int row2 = int.Parse(cmdParts[3]);
                 int col2 = int.Parse(cmdParts[4]);
+                if (row1 >= 0 && row1 < rowsCount &&
+                    col1 >= 0 && col1 < colsCount &&
+                    row2 >= 0 && col2 < colsCount)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
     }
