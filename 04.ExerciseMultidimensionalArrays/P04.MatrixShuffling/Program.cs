@@ -41,9 +41,9 @@ namespace P04.MatrixShuffling
             if (cmd.Contains("swap") && cmdParts.Length == 5)
             {
                 int row1 = int.Parse(cmdParts[1]);
-                int col1 = int.Parse(cmdParts[1]);
-                int row2 = int.Parse(cmdParts[1]);
-                int col2 = int.Parse(cmdParts[1]);
+                int col1 = int.Parse(cmdParts[2]);
+                int row2 = int.Parse(cmdParts[3]);
+                int col2 = int.Parse(cmdParts[4]);
             }
         }
     }
