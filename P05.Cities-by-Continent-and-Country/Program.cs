@@ -41,15 +41,13 @@ namespace P05.Cities_by_Continent_and_Country
         }
         static void PrintCitiesByContinentAndCountry(Dictionary<string, Dictionary<string, List<string>>> cities)
         {
-            foreach (string continentName in cities.Keys)
+            foreach (var (continentName, countries) in cities)
             {   
-                var countries = cities[continentName];
                 Console.WriteLine(continentName + ":");
-                foreach (string countryName in countries.Keys)
+                foreach (var (countryName, citiesInCountry) in countries)
                 {
-                    Console.Write("  " + countryName + " -> ");
-                    var citiesInCountry = countries[countryName];
-                    Console.WriteLine(string.Join(", ", citiesInCountry));
+                    Console.WriteLine("  " + countryName + " -> " +
+                        string.Join(", ", citiesInCountry));
                 }
             }
         }
