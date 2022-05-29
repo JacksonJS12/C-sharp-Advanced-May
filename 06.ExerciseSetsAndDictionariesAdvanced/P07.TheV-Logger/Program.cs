@@ -9,13 +9,11 @@ namespace P07.TheV_Logger
     {
         static void Main(string[] args)
         {
-            var vloggers = new SortedSet<string>();
-            var followers = new Dictionary<string, HashSet<string>>();
-            followers.OrderBy(entry => entry.Value.Count);
-
-            var followings = new Dictionary<string, HashSet<string>>();
-            followings.OrderByDescending(entry => entry.Value.Count)
-                .ThenBy(entry => entry.Key);
+            var vloggers = new HashSet<string>();
+            var followers = new Dictionary<string, List<string>>();
+            
+            var followings = new Dictionary<string, List<string>>();
+            
 
             string input = Console.ReadLine();
             while (input != "Statistics")
@@ -29,26 +27,62 @@ namespace P07.TheV_Logger
 
                 if (inputInfo[1] == "joined")
                 {
-                    vloggers.Add(vloggerName);
+                    if (!followings.ContainsKey(inputInfo[0]))
+                    {
+                        vloggers.Add(vloggerName);
+                        followings.Add(vloggerName, new List<string>());
+                        continue;
+                    }
+                    else if (!followers.ContainsKey(inputInfo[0]))
+                    {
+                        vloggers.Add(vloggerName);
+                        followers.Add(vloggerName, new List<string>());
+                        continue;
+                    }
+                    else if (!followings.ContainsKey(inputInfo[0]) &&
+                        !followers.ContainsKey(inputInfo[0]))
+                    {
+                        vloggers.Add(vloggerName);
 
-                    followers.Add(vloggerName, new HashSet<string>());
-                    followings.Add(vloggerName, new HashSet<string>());
+                        followers.Add(vloggerName, new List<string>());
+                        followings.Add(vloggerName, new List<string>());
+                        continue;
+                    }
+                    
+                   
                 }
                 else if (vloggerName != vloggerFollowed)
                 {
                     if (inputInfo[1] == "followed")
-                    {
-
-                        followings[vloggerName].Add(vloggerFollowed);
-
-                        followers[vloggerFollowed].Add(vloggerName);
+                    { 
+                        if (!followings.ContainsValue(followings.Any(x => x.Value = inputInfo[0])))
+                        {
+                            followings[vloggerName].Add(vloggerFollowed);
+                            continue;
+                        }
+                        else if (!followers.ContainsValue(inputInfo[0]))
+                        {
+                            followers[vloggerFollowed].Add(vloggerName);
+                            continue;
+                        }
+                        else if (!followings.ContainsValue(inputInfo[0]) &&
+                            !followers.ContainsKey(inputInfo[0]))
+                        {
+                            followings[vloggerName].Add(vloggerFollowed);
+                            followers[vloggerFollowed].Add(vloggerName);
+                            continue;
+                        }
 
                     }
                 }
 
                 input = Console.ReadLine();
             }
-           
+
+            followers.OrderBy(entry => entry.Value.Count);
+            followings.OrderByDescending(entry => entry.Value.Count)
+                .ThenBy(entry => entry.Key);
+
             Console.WriteLine($"The V-Logger has a total of {vloggers.Count} vloggers in its logs.");
             foreach (var item in followers)
             {
