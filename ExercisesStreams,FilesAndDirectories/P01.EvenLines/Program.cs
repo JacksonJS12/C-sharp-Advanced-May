@@ -8,34 +8,30 @@
     {
         static void Main()
         {
-            string inputFilePath = @"C:\Users\ricky\source\repos\C-sharp-Advanced-May\ExercisesStreams,FilesAndDirectories";
+            string inputFilePath = @"..\..\..\..\text.txt";
 
-            Console.WriteLine(ProcessLines(inputFilePath));
+            Console.WriteLine(ProcessLines(inputFilePath)); 
         }
         public static string ProcessLines(string inputFilePath)
         {
-            int counter = 0;
-            StreamReader reader;
-            using (reader = new StreamReader(inputFilePath)) ;
+            int counter = -1;
+            using (StreamReader reader = new StreamReader(inputFilePath))
             {
                 string line = reader.ReadLine();
                 while (line != null)
                 {
-                    line = Replace(line);
-
-                   line = Reverse(line);
-
-                    if (counter % 2 ==0)
-                    {
-
-                    }
-
-                    line = Console.ReadLine();
                     counter++;
+                    if (counter % 2 == 0)
+                    {
+                        line = Replace(line);
+                        line = Reverse(line);
+                        Console.WriteLine(line);
+                    }
+                    line = reader.ReadLine();
                 }
             }
+            return string.Empty;
         }
-
         private static string Reverse(string line)
         {
             return string.Join(" ", line.Split().Reverse());
