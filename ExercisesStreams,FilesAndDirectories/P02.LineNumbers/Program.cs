@@ -1,6 +1,7 @@
 ﻿namespace LineNumbers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
 
@@ -21,6 +22,8 @@
             int linesCounter = 0;
             int lethersCounter = 0;
             int symbolsCounter = 0;
+
+            List<string> outputLines = new List<string>();
             foreach (string line in lines)
             {
                 linesCounter++;
@@ -30,7 +33,10 @@
                 symbolsCounter = line.Count(char.IsPunctuation);
 
                 string modifiedLine = $"Line {linesCounter}: {line} ({lethersCounter})({symbolsCounter})";
+
+                outputLines.Add(modifiedLine);
             }
+            File.WriteAllLines(outputFilePath, outputLines);
         }
     }
 }
