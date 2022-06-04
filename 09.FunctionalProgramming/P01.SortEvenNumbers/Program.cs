@@ -5,19 +5,15 @@ namespace P01.SortEvenNumbers
 {
     internal class Program
     {
+        static int Parse(string str) => int.Parse(str);
         static void Main(string[] args)
         {
-            Func<string, int> parseStringToInt = x => int.Parse(x);
-            Func<int, bool> isEven = x => x % 2 == 0;
-            Func<int, int> indentity = n => n;
-
             string input = Console.ReadLine();
-            string[] tokens = input.Split(", ");
-            int[] nums = tokens.Select(parseStringToInt).ToArray();
-            int[] evenNums = nums.Where(isEven).ToArray();
-            int[] orderedEvenNums = evenNums.OrderBy(indentity).ToArray();
-
-            Console.WriteLine(string.Join(", ", orderedEvenNums));
+            int[] nums = input.Split(", ")
+                .Select(Parse)
+                .ToArray();
+            Console.WriteLine(nums.Count());
+            Console.WriteLine(nums.Sum());
         }
     }
 }
