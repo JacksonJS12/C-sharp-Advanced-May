@@ -7,14 +7,17 @@ namespace P01.SortEvenNumbers
     {
         static void Main(string[] args)
         {
-            int[] numbers = Console.ReadLine()
-                .Split(", ")
-                .Select(n => int.Parse(n))
-                .Where(n => n % 2 == 0)
-                .OrderBy(n => n)
-                .ToArray();
+            Func<string, int> parseStringToInt = x => int.Parse(x);
+            Func<int, bool> isEven = x => x % 2 == 0;
+            Func<int, int> indentity = n => n;
 
-            Console.WriteLine(String.Join(", ", numbers));
+            string input = Console.ReadLine();
+            string[] tokens = input.Split(", ");
+            int[] nums = tokens.Select(parseStringToInt).ToArray();
+            int[] evenNums = nums.Where(isEven).ToArray();
+            int[] orderedEvenNums = evenNums.OrderBy(indentity).ToArray();
+
+            Console.WriteLine(string.Join(", ", orderedEvenNums));
         }
     }
 }
