@@ -9,12 +9,19 @@ namespace P02.KnightsOfHonor
     {
         static void Main(string[] args)
         {
-            List<string> list = Console.ReadLine()
+            List<string> names = Console.ReadLine()
                 .Split(' ')
                 .ToList();
 
-            Action<string> printNames = names => Console.WriteLine("Sir " + names);
-            list.ForEach(printNames);
+            Action<string> printNames = name => Console.WriteLine("Sir " + name);
+            names.ForEach(printNames);
+
+            //Func<string, string> addPrefix = name => "Sir" + name;
+            //foreach (var name in names)
+            //{
+            //    Console.WriteLine(addPrefix(name));
+            //}
+
         }
     }
 }
