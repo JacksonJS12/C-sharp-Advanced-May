@@ -13,9 +13,7 @@ namespace P05.AppliedArithmetics
               .Select(int.Parse)
               .ToList();
 
-            Func<List<int>, List<int>> add = list => list.Select(number => number += 1).ToList();
-            Func<List<int>, List<int>> multipoly = list => list.Select(number => number *= 2).ToList();
-            Func<List<int>, List<int> > subtract = list => list.Select(number => number -= 1).ToList();
+            Func<List<int>, List<int>> function = null;
             Action<List<int>> print = list => Console.WriteLine(string.Join(" ", list));
 
             string command = Console.ReadLine();
@@ -23,15 +21,18 @@ namespace P05.AppliedArithmetics
             {
                 if (command == "add")
                 {
-                    numbers = add(numbers);
+                    function = list => list.Select(number => number += 1).ToList();
+                    numbers = function(numbers);
                 }
                 else if (command == "multiply")
                 {
-                    numbers = multipoly(numbers);
+                    function = list => list.Select(number => number *= 2).ToList();
+                    numbers = function(numbers);
                 }
                 else if (command == "subtract")
                 {
-                    numbers = subtract(numbers);
+                    function = list => list.Select(number => number -= 1).ToList();
+                    numbers = function(numbers);
                 }
                 else if (command == "print")
                 {
