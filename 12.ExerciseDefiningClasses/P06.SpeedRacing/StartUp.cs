@@ -8,23 +8,37 @@ namespace DefiningClasses
     {
         static void Main()
         {
-            People people = new People();
+            List<Car> cars = new List<Car>();
+
             int n = int.Parse(Console.ReadLine());
             for (int i = 0; i < n; i++)
             {
-                string member = Console.ReadLine();
-                string name = member.Split()[0];
-                int age = int.Parse(member.Split()[1]);
+                string carInfo = Console.ReadLine();
+                string model = carInfo.Split()[0];
+                double fuelAmount = double.Parse(carInfo.Split()[1]);
+                double fuelConsuptionFor1Km = double.Parse(carInfo.Split()[2]);
 
-                Person person = new Person(name, age);
-                people.AddMember(person);
+                Car car = new Car(model, fuelAmount, fuelConsuptionFor1Km);
+                cars.Add(car);
             }
-            List<Person> modifiedList = people.OrderedList();
-           
 
-            for (int i = 0; i < modifiedList.Count; i++)
+            string command = Console.ReadLine();
+            while (command != "End")
             {
-                Console.WriteLine(modifiedList[i].Name + " - " + modifiedList[i].Age);
+                if (command.StartsWith("Drive"))
+                {
+                    string carModel = command.Split()[1];
+                    double amountOfKm = double.Parse(command.Split()[2]);
+
+                    Car carToDrive = cars.First(car => car.Model == carModel);
+                    carToDrive.Drive(amountOfKm);
+                }
+                
+                command = Console.ReadLine();
+            }
+            foreach (var car in cars)
+            {
+                Console.WriteLine($"{car.Model} {car.FuelAmount:F2} {car.TravelledDistance}");
             }
         }
     }
