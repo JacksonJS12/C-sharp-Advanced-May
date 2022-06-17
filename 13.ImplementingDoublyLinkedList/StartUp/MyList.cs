@@ -21,7 +21,11 @@ namespace StartUp
             this.capacity = capacity;
             this.data = new int[capacity];
         }
-
         public int Count { get; private set; }
+        public void Add(int number)
+        {
+            this.data[this.Count] = number;
+            this.Count++;
+        }
     }
 }
