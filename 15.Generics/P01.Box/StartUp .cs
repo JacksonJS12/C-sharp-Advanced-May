@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace P01.Box
+namespace BoxOfT
 {
-    internal class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }
