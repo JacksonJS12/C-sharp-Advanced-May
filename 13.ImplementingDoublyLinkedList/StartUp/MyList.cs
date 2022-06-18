@@ -37,10 +37,7 @@ namespace StartUp
         }
         public void Add(int number)
         {
-            if (this.Count == this.data.Length)
-            {
-                this.Resize();
-            }
+            CheckIfResizeIsNeeded();
             this.data[this.Count] = number;
             this.Count++;
         }
@@ -51,7 +48,7 @@ namespace StartUp
                 return;
             }
             var message = this.Count == 0 ? "This list is empty" :
-                $"This list has ${this.Count} elements and it's zero-based and you are trying to access {index} which is not in the list";
+                $"This list has {this.Count} elements and it's zero-based and you are trying to access {index} which is not in the list";
             throw new ArgumentException($"Index out of rage. {message}");
         }
         public int RemoveAt(int index)
@@ -70,7 +67,7 @@ namespace StartUp
             return result;
 
         }
-     
+
         public void Shift(int index)
         {
             for (int i = index; i < this.Count - 1; i++)
@@ -97,18 +94,51 @@ namespace StartUp
 
         private void ShiftRight(int index)
         {
-            for (int i = this.Count; i >= index ; i++)
+            for (int i = this.Count - 1; i >= index; i--)
             {
                 this.data[i + 1] = this.data[i];
             }
         }
-        public void Insert (int firstIndex, int secondIndex)
+        public void Insert(int index, int element)
+        {
+            this.ValidateIndex(index);
+            this.Count++;
+            CheckIfResizeIsNeeded();
+            this.ShiftRight(index);
+            this.data[index] = element;
+
+        }
+
+        private void CheckIfResizeIsNeeded()
+        {
+            if (this.Count == this.data.Length)
+            {
+                this.Resize();
+            }
+        }
+        public bool Countains(int element)
+        {
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (this.data[i] == element)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public void Swap(int firstIndex, int secondIndex)
         {
             this.ValidateIndex(firstIndex);
             this.ValidateIndex(secondIndex);
             var firstValue = this.data[firstIndex];
             this.data[firstIndex] = this.data[secondIndex];
             this.data[secondIndex] = firstValue;
+        }
+        public void Clear()
+        {
+            this.Count = 0;
+            this.data = new int[this.capacity];
         }
     }
 }
