@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IteratorsAndComparators
 {
@@ -13,7 +14,10 @@ namespace IteratorsAndComparators
 
             Library library = new Library(bookOne, bookTwo, bookThree);
 
-            foreach (var book in library)
+            var books = library.ToArray();
+            Array.Sort(books, new BookComparerByTitle());
+
+            foreach (var book in books)
             {
                 Console.WriteLine(book);
             }
