@@ -19,7 +19,6 @@ namespace IteratorsAndComparators
         {
             for (int i = 0; i < this.books.Count; i++)
             {
-                Console.WriteLine(this.books[i]);
                 yield return this.books[i];
             }
         }
