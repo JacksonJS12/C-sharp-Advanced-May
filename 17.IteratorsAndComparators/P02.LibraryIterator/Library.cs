@@ -17,43 +17,56 @@ namespace IteratorsAndComparators
 
         public IEnumerator<Book> GetEnumerator()
         {
-            return new LibraryIterator(this.books);
+            for (int i = 0; i < this.books.Count; i++)
+            {
+                Console.WriteLine(this.books[i]);
+                yield return this.books[i];
+            }
         }
-
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return this.GetEnumerator();
         }
 
-        class LibraryIterator : IEnumerator<Book>
-        {
-            private List<Book> books;
-            private int position = -1;
+        //public IEnumerator<Book> GetEnumerator()
+        //{
+        //    return new LibraryIterator(this.books);
+        //}
 
-            public LibraryIterator(List<Book> books)
-            {
-                this.books = books;
-                Reset();
-            }
-            public Book Current => this.books[position];
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return GetEnumerator();
+        //}
 
-            object IEnumerator.Current => this.Current;
+        //class LibraryIterator : IEnumerator<Book>
+        //{
+        //    private List<Book> books;
+        //    private int position = -1;
 
-            public void Dispose()
-            {
-               
-            }
+        //    public LibraryIterator(List<Book> books)
+        //    {
+        //        this.books = books;
+        //        Reset();
+        //    }
+        //    public Book Current => this.books[position];
 
-            public bool MoveNext()
-            {
-                this.position++;
-                return position < books.Count;
-            }
+        //    object IEnumerator.Current => this.Current;
 
-            public void Reset()
-            {
-                this.position = -1;
-            }
-        }
+        //    public void Dispose()
+        //    {
+
+        //    }
+
+        //    public bool MoveNext()
+        //    {
+        //        this.position++;
+        //        return position < books.Count;
+        //    }
+
+        //    public void Reset()
+        //    {
+        //        this.position = -1;
+        //    }
     }
 }
+
