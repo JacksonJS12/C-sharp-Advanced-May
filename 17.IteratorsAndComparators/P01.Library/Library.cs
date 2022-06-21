@@ -14,8 +14,6 @@ namespace IteratorsAndComparators
         public Library(params Book[] books)
         {
             this.books = books;
-        
         }
-
     }
 }
