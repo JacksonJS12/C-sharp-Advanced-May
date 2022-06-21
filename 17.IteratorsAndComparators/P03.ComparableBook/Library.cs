@@ -17,7 +17,6 @@ namespace IteratorsAndComparators
 
         public IEnumerator<Book> GetEnumerator()
         {
-            this.books.OrderByDescending(x => x.Year);
             for (int i = 0; i < this.books.Count; i++)
             {
                 yield return this.books[i];
