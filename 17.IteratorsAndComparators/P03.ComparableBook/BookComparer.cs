@@ -5,11 +5,16 @@ using System.Text;
 
 namespace IteratorsAndComparators
 {
-    public class BookComparerByTitle : Comparer<Book>
+    public class BookComparer : Comparer<Book>
     {
         public override int Compare(Book x, [AllowNull] Book y)
         {
-            return x.Title.CompareTo(y.Title);
+            int result = x.Title.CompareTo(y.Title);
+            if (result == 0)
+            {
+                result = y.Year.CompareTo(x.Year);
+            }
+            return result;
         }
     }
 }

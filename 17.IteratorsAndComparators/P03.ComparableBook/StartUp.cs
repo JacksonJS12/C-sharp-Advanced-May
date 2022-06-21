@@ -15,7 +15,7 @@ namespace IteratorsAndComparators
             Library library = new Library(bookOne, bookTwo, bookThree);
 
             var books = library.ToArray();
-            Array.Sort(books, new BookComparerByTitle());
+            Array.Sort(books, new BookComparer());
 
             foreach (var book in books)
             {
