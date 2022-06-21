@@ -5,7 +5,7 @@ using System.Text;
 
 namespace IteratorsAndComparators
 {
-    public class BookComparer : Comparer<Book>
+    public class BookComparator : Comparer<Book>
     {
         public override int Compare(Book x, [AllowNull] Book y)
         {

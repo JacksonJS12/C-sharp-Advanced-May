@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace IteratorsAndComparators
 {
-    internal class Program
+    public class StartUp
     {
         static void Main(string[] args)
         {
@@ -15,7 +15,7 @@ namespace IteratorsAndComparators
             Library library = new Library(bookOne, bookTwo, bookThree);
 
             var books = library.ToArray();
-            Array.Sort(books, new BookComparer());
+            Array.Sort(books, new BookComparator());
 
             foreach (var book in books)
             {
