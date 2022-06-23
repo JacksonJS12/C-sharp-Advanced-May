@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ListyIterator
+namespace P02.Collection
 {
     public class ListyIterator<T> : IEnumerable<T>
     {

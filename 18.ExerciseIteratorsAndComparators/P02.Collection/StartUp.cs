@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace ListyIterator
+namespace P02.Collection
 {
     public class StartUp
     {
