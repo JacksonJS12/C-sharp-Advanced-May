@@ -21,7 +21,7 @@ namespace P03.Stack
                     stack.Push(tokens
                         .Skip(1)
                         .Select
-                        (e => e.Split(",")
+                        (e => e.Split(",", StringSplitOptions.RemoveEmptyEntries)
                         .First())
                         .ToArray());
                 }
@@ -34,7 +34,6 @@ namespace P03.Stack
                     catch (ArgumentException ae)
                     {
                         Console.WriteLine(ae.Message);
-                        throw;
                     }
                 }
             }

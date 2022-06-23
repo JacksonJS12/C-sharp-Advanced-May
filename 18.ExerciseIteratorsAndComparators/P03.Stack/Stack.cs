@@ -27,9 +27,12 @@ namespace P03.Stack
             {
                 throw new ArgumentException("No elements");
             }
-            T element = this.collection[this.collection.Count - 1];
-            this.collection.RemoveAt(this.collection.Count - 1);
-            return element;
+            else
+            {
+                T element = this.collection[this.collection.Count - 1];
+                this.collection.RemoveAt(this.collection.Count - 1);
+                return element;
+            }
         }
         public IEnumerator<T> GetEnumerator()
         {
