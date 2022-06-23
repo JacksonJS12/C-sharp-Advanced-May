@@ -10,7 +10,7 @@ namespace P03.Stack
             var stack = new Stack<string>();
             while (true)
             {
-                var tokens = Console.ReadLine().Split();
+                var tokens = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 if (tokens[0] == "END")
                 {
                     break;
