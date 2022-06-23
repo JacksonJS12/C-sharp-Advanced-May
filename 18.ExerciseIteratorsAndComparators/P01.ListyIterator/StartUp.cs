@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace P01.ListyIterator
 {
@@ -6,13 +7,32 @@ namespace P01.ListyIterator
     {
         static void Main(string[] args)
         {
-            ListyIterator<int> listy = new ListyIterator<int>(1, 2, 3, 4, 5);
+            ListyIterator<string> listy = null;
 
-            string cmd = string.Empty;
-            
-            while ((cmd = Console.ReadLine()) != "END");
+            string cmd = Console.ReadLine();
+
+            while (cmd != "END");
             {
+                var tokens = cmd.Split();
 
+                if (tokens[0] == "Create")
+                {
+                    listy = new ListyIterator<string>(tokens.Skip(1).ToArray());
+                }
+                else if (tokens[0] == "Move")
+                {
+                    Console.WriteLine(listy.Move());
+                }
+                else if (tokens[0] == "Print")
+                {
+                    listy.Print();
+                }
+                else if (tokens[0] == "HasNext")
+                {
+                    Console.WriteLine(listy.HasNext());
+                }
+
+                cmd = Console.ReadLine();
             }
         }
     }
