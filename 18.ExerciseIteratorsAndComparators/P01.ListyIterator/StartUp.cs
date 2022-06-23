@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace P01.ListyIterator
+namespace ListyIterator
 {
     public class StartUp
     {
@@ -9,9 +9,9 @@ namespace P01.ListyIterator
         {
             ListyIterator<string> listy = null;
 
-            string cmd = String.Empty;
+            string cmd = Console.ReadLine();
 
-            while ((cmd = Console.ReadLine()) != "END");
+            while ( cmd != "END")
             {
                 var tokens = cmd.Split();
 
@@ -21,7 +21,8 @@ namespace P01.ListyIterator
                 }
                 else if (tokens[0] == "Move")
                 {
-                    Console.WriteLine(listy.Move());
+                    bool move = listy.Move();
+                    Console.WriteLine(move);
                 }
                 else if (tokens[0] == "Print")
                 {
@@ -31,6 +32,8 @@ namespace P01.ListyIterator
                 {
                     Console.WriteLine(listy.HasNext());
                 }
+
+                cmd = Console.ReadLine();
             }
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace P01.ListyIterator
+namespace ListyIterator
 {
     public class ListyIterator<T>
     {
@@ -16,13 +16,13 @@ namespace P01.ListyIterator
             this.currIndex = 0;
         }
 
-        public bool HasNext() => currIndex < collection.Count - 1;
+        public bool HasNext() => this.currIndex <this. collection.Count - 1;
         public bool Move()
         {
             bool canMove = HasNext();
             if (canMove)
             {
-                currIndex++;
+                this.currIndex++;
             }
             return canMove;
         }
@@ -34,7 +34,7 @@ namespace P01.ListyIterator
             }
             else
             {
-                Console.WriteLine($"{collection[currIndex]}");
+                Console.WriteLine($"{this.collection[this.currIndex]}");
             }
         }
     }
