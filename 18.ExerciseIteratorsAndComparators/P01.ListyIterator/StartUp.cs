@@ -9,9 +9,9 @@ namespace P01.ListyIterator
         {
             ListyIterator<string> listy = null;
 
-            string cmd = Console.ReadLine();
+            string cmd = String.Empty;
 
-            while (cmd != "END");
+            while ((cmd = Console.ReadLine()) != "END");
             {
                 var tokens = cmd.Split();
 
@@ -31,8 +31,6 @@ namespace P01.ListyIterator
                 {
                     Console.WriteLine(listy.HasNext());
                 }
-
-                cmd = Console.ReadLine();
             }
         }
     }
