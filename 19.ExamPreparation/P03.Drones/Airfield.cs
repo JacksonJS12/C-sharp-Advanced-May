@@ -36,7 +36,7 @@ namespace Drones
             this.Drones.Add(drone);
             return $"Successfully added {drone.Name} to the airfield.";
         }
-        public bool RemoveDroneByName(string name)
+        public bool RemoveDrone(string name)
         {
             int count = this.Drones.RemoveAll(drone => drone.Name == name);
             return count > 0;
