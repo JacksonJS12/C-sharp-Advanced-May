@@ -1,27 +1,42 @@
-﻿using System;
-using System.IO;
-
-namespace P07.FolderSize
+﻿namespace FolderSize
 {
-    internal class FolderSizeCalculater
+    using System;
+    using System.IO;
+    public class FolderSize
     {
         static void Main(string[] args)
         {
-            decimal folderSize = CalcFolderSize("C:/Brother");
-            Console.WriteLine(folderSize );
-            Console.WriteLine("{0:f2} mb", folderSize / (1024 * 1024));
+            string folderPath = @"../../../Files/TestFolder";
+            string outputPath = @"../../../Files/output.txt";
+
+
+
+
+            double size = GetFolderSize(folderPath);
+            using (StreamWriter writer = new StreamWriter(outputPath))
+            {
+                writer.WriteLine(size);
+            }
         }
 
-        static decimal CalcFolderSize(string path)
+        public static double GetFolderSize(string folderPath)
         {
-            decimal folderSize = 0;
-            var dirInfo = new DirectoryInfo(path);
-            
-            foreach (var f in dirInfo.EnumerateFiles("*.*", SearchOption.AllDirectories))
+            double size = 0;
+            string[] files = Directory.GetFiles(folderPath);
+            string[] subDirectories = Directory.GetDirectories(folderPath);
+
+            foreach (string subDirectory in subDirectories)
             {
-                folderSize += f.Length;
+                size += GetFolderSize(subDirectory);
             }
-            return folderSize;
+
+            foreach (string file in files)
+            {
+                FileInfo fileInfo = new FileInfo(file);
+                size += fileInfo.Length;
+            }
+
+            return size / 1024;
         }
     }
 }
