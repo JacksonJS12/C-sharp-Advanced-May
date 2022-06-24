@@ -1,40 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IteratorsAndComparators
 {
     public class Book : IComparable<Book>
     {
-        public string Title { get; set; }
-        public int Year { get; set; }
-        public List<string> Authors { get; set; }
-
         public Book(string title, int year, params string[] authors)
         {
-            this.Title = title;
-            this.Year = year;
-            this.Authors = authors.ToList();
+            Title = title;
+            Year = year;
+            Authors = new List<string>(authors);
         }
-        public override string ToString()
-        {
-            return $"{this.Title} - {this.Year}";
-        }
+
+        public string Title { get; set; }
+
+        public int Year { get; set; }
+
+        public IReadOnlyList<string> Authors { get; set; }
 
         public int CompareTo(Book other)
         {
-            if (other == null)
-            {
-                return -1;
-            }
-            int result = this.Year.CompareTo(other.Year);
+            int result = Year.CompareTo(other.Year);
             if (result == 0)
             {
-                result = this.Title.CompareTo(other.Title);
+                result = Title.CompareTo(other.Title);
             }
+
             return result;
+        }
+
+        public override string ToString()
+        {
+            return $"{Title} - {Year}";
         }
     }
 }

@@ -2,70 +2,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IteratorsAndComparators
 {
     public class Library : IEnumerable<Book>
     {
-        private List<Book> books;
+        private readonly SortedSet<Book> books;
+
         public Library(params Book[] books)
         {
-            this.books = books.ToList();
+            this.books = new SortedSet<Book>(books);
         }
+
 
         public IEnumerator<Book> GetEnumerator()
         {
-            for (int i = 0; i < this.books.Count; i++)
+            return new LibraryIterator(books);
+            /*
+             for (int index = 0; index < books.Count; index++) - Used to skip creating custom Iterator class.
             {
-                yield return this.books[i];
+                 yield return books[index];
             }
+             */
         }
-        IEnumerator IEnumerable.GetEnumerator()
+
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+
+        private class LibraryIterator : IEnumerator<Book>
         {
-            return this.GetEnumerator();
+            private readonly List<Book> books;
+            private int currentIndex;
+
+            public LibraryIterator(SortedSet<Book> books)
+            {
+                Reset();
+                this.books = new List<Book>(books.ToList());
+            }
+            public bool MoveNext()
+            {
+                currentIndex++;
+                return currentIndex < books.Count;
+            }
+            public Book Current => books[currentIndex];
+            object IEnumerator.Current => Current;
+            public void Reset() => currentIndex = -1;
+
+            public void Dispose() { }
         }
-
-        //public IEnumerator<Book> GetEnumerator()
-        //{
-        //    return new LibraryIterator(this.books);
-        //}
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return GetEnumerator();
-        //}
-
-        //class LibraryIterator : IEnumerator<Book>
-        //{
-        //    private List<Book> books;
-        //    private int position = -1;
-
-        //    public LibraryIterator(List<Book> books)
-        //    {
-        //        this.books = books;
-        //        Reset();
-        //    }
-        //    public Book Current => this.books[position];
-
-        //    object IEnumerator.Current => this.Current;
-
-        //    public void Dispose()
-        //    {
-
-        //    }
-
-        //    public bool MoveNext()
-        //    {
-        //        this.position++;
-        //        return position < books.Count;
-        //    }
-
-        //    public void Reset()
-        //    {
-        //        this.position = -1;
-        //    }
     }
 }
-
