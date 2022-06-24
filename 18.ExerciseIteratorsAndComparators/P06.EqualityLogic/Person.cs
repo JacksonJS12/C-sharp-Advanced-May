@@ -9,17 +9,14 @@ namespace P06.EqualityLogic
     {
         private string name;
         private int age;
-        private string town;
 
-        public Person(string name, int age, string town)
+        public Person(string name, int age)
         {
             this.name = name;
             this.age = age;
-            this.town = town;
         }
         public string Name => name;
         public int Age => age;
-        public string Town => town;
         public int CompareTo(Person other)
         {
             int result = this.Name.CompareTo(other.Name);
@@ -27,11 +24,19 @@ namespace P06.EqualityLogic
             {
                 result = this.Age.CompareTo(other.Age);
             }
-            if (result == 0)
-            {
-                result = this.Town.CompareTo(other.Town);
-            }
             return result;
         }
+        public override int GetHashCode() => this.Name.GetHashCode() ^ this.Age.GetHashCode();
+
+        public override bool Equals(object? obj)
+        {
+            var other = obj as Person;
+            if (other == null)
+            {
+                return false;
+            }
+            return this.Age == other.Age && this.Name == other.Name;
+        }
+        public override string ToString() => $"{this.Name} {this.Age}";
     }
 }
