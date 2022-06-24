@@ -1,106 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CarManufacturer
+﻿namespace CarManufacturer
 {
-    class Car
+    using System;
+    public class Car
     {
-        private string make;
-        private string model;
-        private int year;
-
-        public Car() : this("VW", "Golf", 2025)
-        { 
-        }
-        public Car(string make, string model, int year)
-            : this(make, model, year, 200, 10)
+        public Car()
         {
+            Make = "VW";
+            Model = "Golf";
+            Year = 2025;
+            FuelQuantity = 200;
+            FuelConsumption = 10;
         }
+
+        public Car(string make, string model, int year) : this()
+        {
+            Make = make;
+            Model = model;
+            Year = year;
+        }
+
         public Car(string make, string model, int year, double fuelQuantity, double fuelConsumption)
+            : this(make, model, year)
         {
-            this.make = make;
-            this.model = model;
-            this.year = year;
-            this.fuelQuantity = fuelQuantity;
-            this.fuelConsumption = fuelConsumption;
-
+            FuelConsumption = fuelConsumption;
+            FuelQuantity = fuelQuantity;
         }
         public Car(string make, string model, int year, double fuelQuantity, double fuelConsumption, Engine engine, Tire[] tires)
+            : this(make, model, year, fuelQuantity, fuelConsumption)
         {
-            this.make = make;
-            this.model = model;
-            this.year = year;
-            this.fuelQuantity = fuelQuantity;
-            this.fuelConsumption = fuelConsumption;
-            this.Engine = engine;
-            this.Tires = tires;
-        }
-        public int Year
-        {
-            get { return year; }
-            set { year = value; }
-        }
-        public string Make
-        {
-            get { return make; }
-            set { make = value; }
+            Tires = tires;
+            Engine = engine;
         }
 
-        public string Model
-        {
-            get { return model; }
-            set { model = value; }
-        }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public int Year { get; set; }
+        public double FuelQuantity { get; set; }
+        public double FuelConsumption { get; set; }
+        public Engine Engine { get; set; }
+        public Tire[] Tires { get; set; }
 
-        private double fuelQuantity;
 
-        public double FuelQuantity
+        public void DriveCar(int distance)
         {
-            get { return fuelQuantity; }
-            set { fuelQuantity = value; }
-        }
-
-        private double fuelConsumption;
-        public double FuelConsumption
-        {
-            get { return fuelConsumption; }
-            set { fuelConsumption = value; }
-        }
-        private Engine eingine;
-        private Tire[] tires;
-        public Engine Engine
-        {
-            get { return eingine; }
-            set { eingine = value; }
-        }
-        public Tire[] Tires
-        {
-            get { return tires; }
-            set { tires = value; }
-        }
-
-        public void Drive(double distnace)
-        {
-            double consumption = distnace * this.FuelConsumption;
-            if (consumption <= this.fuelQuantity)
-            {
-                this.FuelQuantity -= consumption;
-            }
-            else
+            double fuelNeeded = FuelConsumption * distance;
+            if (fuelNeeded > FuelQuantity)
             {
                 Console.WriteLine("Not enough fuel to perform this trip!");
             }
+            else
+            {
+                FuelQuantity -= fuelNeeded;
+            }
         }
+
         public string WhoAmI()
         {
-            string carInfo =
-                $"Make: {this.make}\r\n" +
-                $"Model: {this.Model}\r\n" +
-                $"Year: {this.Year}\r\n" +
-                $"Fuel: {this.FuelQuantity:F2}L";
-            return carInfo;
-
+            return ($"Make: {this.Make}\nModel: {this.Model}\nYear: {this.Year}\nFuel: {this.FuelQuantity:F2}");
         }
     }
 }

@@ -1,33 +1,27 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+
 
 namespace CarManufacturer
 {
     public class StartUp
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            Car car = new Car();
-            car.Drive(700);
-            Console.WriteLine(car.WhoAmI());
-            Console.WriteLine();
-
-            car.Drive(50);
-            Console.WriteLine(car.WhoAmI());
-            Console.WriteLine();
-
-            Engine lamboEngine = new Engine(560, 6300);
-            var lamboTires = new Tire[4]
+            Tire[] tires = new Tire[]
             {
-                new Tire(1, 2.4),
-                new Tire(1, 2.3),
-                new Tire(2, 2.4),
-                new Tire(2, 2.6),
-            };
-            Car lambo = new Car("Lambo", "Urus", 2010, 250, 0.12, lamboEngine, lamboTires);
+                new Tire(1, 2.5),
+                new Tire(1, 2.1),
+                new Tire(2, 0.5),
+                new Tire(2, 2.3)
 
-            lambo.Drive(50);
-            Console.WriteLine(lambo.WhoAmI());
-           
+            };
+
+            Engine engine = new Engine(500, 6300);
+
+            Car car = new Car("Lamborghini", "Urus", 2022, 250, 9, engine, tires);
+
+            Console.WriteLine(car.WhoAmI());
         }
     }
 }

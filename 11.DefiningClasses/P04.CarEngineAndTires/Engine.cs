@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CarManufacturer
+﻿namespace CarManufacturer
 {
     public class Engine
     {
-        public int HorsePoweer { get; set; }
-        public double cubicCapacity { get; set; }
+        private int horsePower;
+        private double cubicCapacity;
 
-        public Engine(int horsePoweer, double cubicCapacity)
+        public int HorsePower { get; set; }
+        public double CubicCapacity { get; set; }
+
+        public Engine(int horsePower, double cubicCapacity)
         {
-            this.HorsePoweer = horsePoweer;
-            this.cubicCapacity = cubicCapacity;
+            this.HorsePower = horsePower;
+            this.CubicCapacity = cubicCapacity;
         }
     }
 }
