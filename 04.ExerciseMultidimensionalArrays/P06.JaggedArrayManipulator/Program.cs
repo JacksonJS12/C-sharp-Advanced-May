@@ -7,60 +7,82 @@ namespace P06.JaggedArrayManipulator
     {
         static void Main(string[] args)
         {
-            int rowsCount = int.Parse(Console.ReadLine());
-
-            int[][] matrix = new int[rowsCount][];
-            for (int row = 0; row < rowsCount; row++)
+            int rows = int.Parse(Console.ReadLine());
+            double[][] jaggedArray = new double[rows][];
+            for (int row = 0; row < rows; row++) // read the jaggedArray
             {
-                matrix[row] = Console.ReadLine()
-                    .Split()
-                    .Select(int.Parse)
-                    .ToArray();
+                double[] currentRow = Console.ReadLine().Split().Select(double.Parse).ToArray();
+                jaggedArray[row] = currentRow;
             }
 
-            for (int row = 0; row < rowsCount - 1; row++)
+            for (int row = 0; row < rows - 1; row++) // start analyzing the jaggedArray
             {
-                if (matrix[row].Length  == matrix[row+1].Length)
+                if (jaggedArray[row].Length == jaggedArray[row + 1].Length)
                 {
-                    matrix[row] = matrix[row].Select(element => element * 2).ToArray();
-                    matrix[row + 1] = matrix[row + 1].Select(element => element * 2).ToArray();
+                    MultiplyEachElementInBothArrays(jaggedArray, row);
                 }
+
                 else
                 {
-                    matrix[row] = matrix[row].Select(element => element / 2).ToArray();
-                    matrix[row + 1] = matrix[row + 1].Select(element => element / 2).ToArray();
+                    DivideEachElementInBothArrays(jaggedArray, row);
                 }
             }
 
-            string cmd = Console.ReadLine();
-            while (cmd != "End")
+            while (true) // check for valid commands
             {
-                int row = int.Parse(cmd.Split()[1]);
-                int col = int.Parse(cmd.Split()[2]);
-                int value = int.Parse(cmd.Split()[3]);
+                string command = Console.ReadLine();
+                if (command == "End")
+                {
+                    foreach (double[] currentRow in jaggedArray)
+                    {
+                        Console.WriteLine(string.Join(" ", currentRow));
+                    }
 
-                if (cmd.StartsWith("Add"))
-                {
-                    if (row >= 0 && row < rowsCount && col >= 0 && col < matrix[row].Length)
-                    {
-                        matrix[row][col] += value;
-                    }
-                }
-                else if (cmd.StartsWith("Subtract"))
-                {
-                    if (row >= 0 && row < rowsCount && col >= 0 && col < matrix[row].Length)
-                    {
-                        matrix[row][col] -= value;
-                    }
+                    break;
                 }
 
-                cmd = Console.ReadLine();
-            }
+                string[] commandArray = command.Split().ToArray();
+                int row = int.Parse(commandArray[1]);
+                int col = int.Parse(commandArray[2]);
+                int value = int.Parse(commandArray[3]);
+                if (commandArray[0] == "Add" && row >= 0 && row <= rows - 1 && col >= 0 && col <= jaggedArray[row].Length - 1)
+                {
+                    jaggedArray[row][col] += value;
+                }
 
-            foreach (var row in matrix)
-            {
-                Console.WriteLine(String.Join(" ", row));
+                else if (commandArray[0] == "Subtract" && row >= 0 && row <= rows - 1 && col >= 0 && col <= jaggedArray[row].Length - 1)
+                {
+                    jaggedArray[row][col] -= value;
+                }
             }
         }
+
+
+        private static void DivideEachElementInBothArrays(double[][] jaggedArray, int row)
+        {
+            for (int i = 0; i < jaggedArray[row].Length; i++)
+            {
+                jaggedArray[row][i] = jaggedArray[row][i] / 2;
+            }
+
+            for (int i = 0; i < jaggedArray[row + 1].Length; i++)
+            {
+                jaggedArray[row + 1][i] = jaggedArray[row + 1][i] / 2;
+            }
+        }
+
+        private static void MultiplyEachElementInBothArrays(double[][] jaggedArray, int row)
+        {
+            for (int i = 0; i < jaggedArray[row].Length; i++)
+            {
+                jaggedArray[row][i] = jaggedArray[row][i] * 2;
+            }
+
+            for (int j = 0; j < jaggedArray[row + 1].Length; j++)
+            {
+                jaggedArray[row + 1][j] = jaggedArray[row + 1][j] * 2;
+            }
+        }
+
     }
 }
