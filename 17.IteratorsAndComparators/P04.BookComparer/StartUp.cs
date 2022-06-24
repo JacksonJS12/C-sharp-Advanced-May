@@ -1,6 +1,4 @@
-﻿nes(19 sloc)  660 Bytes
-
-using System;
+﻿using System;
 
 namespace IteratorsAndComparators
 {
