@@ -8,18 +8,20 @@ namespace BoxOfT
     {
         private List<T> internalList = new List<T>();
 
-        public int Count => internalList.Count;
-
-        public void Add(T element)
+        public void Add(T item)
         {
-            this.internalList.Add(element);
+            internalList.Add(item);
         }
 
         public T Remove()
         {
-            var element = internalList[internalList.Count - 1];
+            T removedItem = internalList[internalList.Count - 1];
             internalList.RemoveAt(internalList.Count - 1);
-            return element;
+            return removedItem;
         }
+
+        public int Count => internalList.Count;
+
     }
+
 }

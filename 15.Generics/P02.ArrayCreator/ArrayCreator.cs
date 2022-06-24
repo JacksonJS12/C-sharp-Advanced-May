@@ -4,18 +4,16 @@ using System.Text;
 
 namespace GenericArrayCreator
 {
-    public class ArrayCreator<T>
+    public class ArrayCreator
     {
-        public static T[] Create<T>(int length, T item)
+        public static T[] Create<T>(int lenght, T item)
         {
-            var result = new T[length];
-            for (int i = 0; i < length; i++)
+            T[] arr = new T[lenght];
+            for (int i = 0; i < lenght; i++)
             {
-                result[i] = item;
+                arr[i] = item;
             }
-
-            return result;
+            return arr;
         }
-
     }
 }
