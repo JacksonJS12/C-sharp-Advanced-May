@@ -7,59 +7,57 @@ namespace P03.MaximalSum
     {
         static void Main(string[] args)
         {
-            string dimencions = Console.ReadLine();
-            int rowsCount = int.Parse(dimencions.Split()[0]);
-            int colsCount = int.Parse(dimencions.Split()[1]);
-
-            int[,] matrix = new int[rowsCount, colsCount];
-            for (int row = 0; row < rowsCount; row++)
+            var size = Console.ReadLine()
+                .Split(new[] { ' ' }
+                    , StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToArray();
+            var rowsCount = size[0];
+            var columnsCount = size[1];
+            var matrix = new int[rowsCount, columnsCount];
+            //fill in matrix
+            for (int rows = 0; rows < rowsCount; rows++)
             {
-                int[] elements = Console.ReadLine()
-                    .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-                    .Select(int.Parse)
-                    .ToArray();
-
-                for (int col = 0; col < colsCount; col++)
+                var input = Console.ReadLine()
+                    .Split(new[] { ' ' }
+                        , StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse).ToArray();
+                for (int columns = 0; columns < columnsCount; columns++)
                 {
-                    matrix[row, col] = elements[col];
+                    matrix[rows, columns] = input[columns];
                 }
             }
-
-            int[,] square3x3Matrix = new int[3, 3];
-            int maxSum = 0;
-            int sum = 0;
-
-            for (int row = 0; row < rowsCount - 2; row++)
+            //algorithm
+            var rowIndex = 0;
+            var colIndex = 0;
+            var maxSum = 0;
+            for (int startRow = 0; startRow < rowsCount - 2; startRow++)
             {
-
-                for (int col = 0; col < colsCount - 2; col++)
+                for (var startColumn = 0; startColumn < columnsCount - 2; startColumn++)
                 {
-                    square3x3Matrix[row, col] = matrix[row, col];
-                    square3x3Matrix[row + 1, col] = matrix[row + 1, col+1];
-                    square3x3Matrix[row + 2, col] = matrix[row + 2, col+2];
-                    sum += matrix[row, col] + matrix[row + 1, col+1] + matrix[row + 2, col+2];
+                    int currentRowSum = matrix[startRow, startColumn] + matrix[startRow, startColumn + 1] + matrix[startRow, startColumn + 2]
+                              + matrix[startRow + 1, startColumn] + matrix[startRow + 1, startColumn + 1] + matrix[startRow + 1, startColumn + 2]
+                              + matrix[startRow + 2, startColumn] + matrix[startRow + 2, startColumn + 1] + matrix[startRow + 2, startColumn + 2];
 
-
+                    if (currentRowSum > maxSum)
+                    {
+                        maxSum = currentRowSum;
+                        rowIndex = startRow;
+                        colIndex = startColumn;
+                    }
                 }
-                if (sum > maxSum)
-                {
-                    maxSum = sum;
-                    square3x3Matrix = new int[3, 3];
-
-                }
-                sum = 0;
-
             }
-
             Console.WriteLine($"Sum = {maxSum}");
-            for (int row = 0; row < square3x3Matrix.GetLength(0); row++)
-            {
-                for (int col = 0; col < square3x3Matrix.GetLength(1); col++)
-                {
-                    Console.Write(square3x3Matrix[row, col] + " ");
-                }
-                Console.WriteLine();
-            }
+            Console.WriteLine($"{matrix[rowIndex, colIndex]} " +
+                              $"{matrix[rowIndex, colIndex + 1]} " +
+                              $"{matrix[rowIndex, colIndex + 2]}");
+
+            Console.WriteLine($"{matrix[rowIndex + 1, colIndex]} " +
+                              $"{matrix[rowIndex + 1, colIndex + 1]} " +
+                              $"{matrix[rowIndex + 1, colIndex + 2]}");
+
+            Console.WriteLine($"{matrix[rowIndex + 2, colIndex]} " +
+                              $"{matrix[rowIndex + 2, colIndex + 1]} " +
+                              $"{matrix[rowIndex + 2, colIndex + 2]}");
         }
     }
 }
