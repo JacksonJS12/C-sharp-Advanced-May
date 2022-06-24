@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace P03.WordCount
+namespace WordCount
 {
     internal class Program
     {
