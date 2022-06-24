@@ -1,4 +1,5 @@
-﻿namespace Drones
+﻿using System;
+namespace Drones
 {
     public class Drone
     {
@@ -16,9 +17,9 @@
         public override string ToString()
         {
             return
-                $"Drone: {this.Name}\r\n" +
-                $"Manufactured by: {this.Brand}\r\n" +
-                $"Range: {this.Range} kilometers\r\n";
+                $"Drone: {this.Name}" + Environment.NewLine +
+                $"Manufactured by: {this.Brand}" + Environment.NewLine +
+                $"Range: {this.Range} kilometers" + Environment.NewLine;
         }
         //Drone: D20
         // Manufactured by: DEERC
