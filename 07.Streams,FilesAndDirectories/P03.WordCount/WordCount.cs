@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-namespace WordCount
+﻿namespace WordCount
 {
-    internal class Program
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    public class WordCount
     {
         static void Main(string[] args)
         {
-
             string wordPath = @"..\..\..\Files\words.txt";
             string textPath = @"..\..\..\Files\text.txt";
             string outputPath = @"..\..\..\Files\output.txt";
