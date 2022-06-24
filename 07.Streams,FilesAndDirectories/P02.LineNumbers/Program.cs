@@ -6,6 +6,7 @@ namespace LineNumbers
     {
         static void Main()
         {
+
             string inputPath = @"..\..\..\Files\input.txt";
             string outputPath = @"..\..\..\Files\output.txt";
 
@@ -14,24 +15,19 @@ namespace LineNumbers
 
         public static void RewriteFileWithLineNumbers(string inputFilePath, string outputFilePath)
         {
-            var reader = new StreamReader("../../../input.txt");
-            using (reader)
-            {
-                var writer = new StreamWriter("ouput.txt");
-                using (writer)
-                {
-                    while (true)
-                    {
-                        int lineNum = 0;
-                        string line = reader.ReadLine();
-                        while (line != null)
-                        {
-                            writer.WriteLine(lineNum + ". " + line);
-                          
-                            lineNum++;
-                            line = reader.ReadLine();
-                        }
+            StreamReader reader = new StreamReader(inputFilePath);
+            StreamWriter writer = new StreamWriter(outputFilePath);
 
+            using (writer)
+            {
+                using (reader)
+                {
+                    int line = 1;
+                    string input;
+                    while ((input = reader.ReadLine()) != null)
+                    {
+                        writer.WriteLine($"{line}. {input}");
+                        line++;
                     }
                 }
             }
