@@ -21,7 +21,7 @@ namespace CarManufacturer
                 .ToList();
 
             specialCars.ForEach(x => x.DriveCar(20));
-            specialCars.ForEach(x => Console.WriteLine(x));
+            specialCars.ForEach(x => Console.WriteLine(x.WhoAmI()));
 
 
         }
