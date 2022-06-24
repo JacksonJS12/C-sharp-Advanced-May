@@ -1,50 +1,42 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
-namespace P05.ExtractSpecialBytes
+namespace ExtractBytes
 {
-    internal class Program
+    public class ExtractBytes
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            const byte secretCode = 243;
-            XorEncrypt(
-                "../../../files/img.jpg",
-                "../../../files/img-encrypted.jpg",
-                secretCode);
+            string binaryFilePath = @"..\..\..\Files\example.png";
+            string bytesFilePath = @"..\..\..\Files\bytes.txt";
+            string outputPath = @"..\..\..\Files\output.bin";
 
-            XorEncrypt(
-                "../../../files/img-encrypted.jpg",
-                "../../../files/img-dencrypted.jpg",
-                secretCode);
-            
+            ExtractBytesFromBinaryFile(binaryFilePath, bytesFilePath, outputPath);
         }
 
-        private static void XorEncrypt(string inputFileName, string outPutFileName, byte secretCode)
+        public static void ExtractBytesFromBinaryFile(string binaryFilePath, string bytesFilePath, string outputPath)
         {
-            using (var input = new FileStream(inputFileName, FileMode.Open))
+            using StreamReader streamReader = new StreamReader(bytesFilePath);
+            byte[] fileBytes = File.ReadAllBytes(binaryFilePath);
+            var bytesList = new List<String>();
+            var sb = new StringBuilder();
+
+            while (!streamReader.EndOfStream)
             {
-                using (var output = new FileStream(outPutFileName, FileMode.Create))
+                bytesList.Add(streamReader.ReadLine());
+            }
+            foreach (var item in fileBytes)
+            {
+                if (bytesList.Contains(item.ToString()))
                 {
-                    var buf = new byte[1024];
-                    while (true)
-                    {
-                        var bytesRead = input.Read(buf, 0, buf.Length);
-                        if (bytesRead == 0)
-                            break;
-                        Encrypt(buf, bytesRead, secretCode);
-                        output.Write(buf, 0, bytesRead);
-                    }
+                    sb.AppendLine(item.ToString());
                 }
-            }
-        }
 
-        private static void Encrypt(byte[] buf,int read, byte secretCode)
-        {
-            for (int i = 0; i < read; i++)
-            {
-                buf[i] = (byte) (buf[i] ^ secretCode);
             }
+            using StreamWriter file = new System.IO.StreamWriter(outputPath);
+            file.WriteLine(sb.ToString().Trim());
         }
     }
 }
