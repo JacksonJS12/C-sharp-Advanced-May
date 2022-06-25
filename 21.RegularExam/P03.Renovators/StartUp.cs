@@ -23,7 +23,7 @@ namespace Renovators
 
             // Add Renovator
             Console.WriteLine(catalog.AddRenovator(renovator)); // Successfully added Gosho to the catalog.
-            Console.WriteLine(catalog.GetCount); // 1
+            Console.WriteLine(catalog.Count); // 1
 
             // Remove Renovator
             Console.WriteLine(catalog.RemoveRenovator("Pesho"));  // False

@@ -20,7 +20,7 @@ namespace Renovators
             this.Project = project;
             this.Renovators = new List<Renovator>();
         }
-        public int GetCount => Renovators.Count();
+        public int Count => this.Renovators.ToArray().Length;
 
         public string AddRenovator(Renovator renovator)
         {
@@ -28,11 +28,7 @@ namespace Renovators
             {
                 return "Renovators are no more needed.";
             }
-            if (string.IsNullOrEmpty(renovator.Name))
-            {
-                return $"Invalid renovator's information.";
-            }
-            if (string.IsNullOrEmpty(renovator.Type))
+            if (string.IsNullOrEmpty(renovator.Name) && string.IsNullOrEmpty(renovator.Type))
             {
                 return $"Invalid renovator's information.";
             }
