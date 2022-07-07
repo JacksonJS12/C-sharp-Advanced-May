@@ -6,7 +6,10 @@ namespace P06.Quicksort
     {
         static void Main(string[] args)
         {
-            
+            int[] coins = new int[]
+            {
+                1, 2 ,5 ,10, 20, 50
+            };
         }
     }
 }
