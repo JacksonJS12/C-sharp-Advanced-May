@@ -6,7 +6,7 @@ namespace P06.Quicksort
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
