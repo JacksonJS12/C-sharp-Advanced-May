@@ -16,7 +16,6 @@
             int targetSum = int.Parse(Console.ReadLine());
 
             Dictionary<int, int> chooseCoins = ChooseCoins(coins, targetSum);
-
         }
 
         public static Dictionary<int, int> ChooseCoins(IList<int> coins, int targetSum)
