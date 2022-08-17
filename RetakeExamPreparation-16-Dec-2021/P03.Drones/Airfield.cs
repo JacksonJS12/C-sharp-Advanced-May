@@ -35,12 +35,24 @@ namespace Drones
                     this.drones.Add(drone);
                     return $"Successfully added {drone.Name} to the airfield.";
                 }
+                return "Invalid drone.";
             }
-            return "Invalid drone.";
+            return "Airfield is full.";
+
+
         }
 
         public bool RemoveDrone(string name)
-            => this.drones.Any(d => d.Name == name);
+        {
+            bool isThereDroneToRemove = false;
+            Drone droneToRemove = this.drones.FirstOrDefault(d => d.Name == name);
+            if (droneToRemove != null)
+            {
+                isThereDroneToRemove = true;
+                this.drones.Remove(droneToRemove);
+            }
+            return isThereDroneToRemove;
+        }
 
         public int RemoveDroneByBrand(string brand)
         {
