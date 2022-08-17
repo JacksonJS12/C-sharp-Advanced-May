@@ -90,8 +90,8 @@ namespace P02.Armory
             matrix[row, col] = '-';
             if (0 > newRow ||
                 0 > newCol ||
-                matrix.GetLength(0) < newRow ||
-                matrix.GetLength(1) < newCol)
+                matrix.GetLength(0) <= newRow ||
+                matrix.GetLength(1) <= newCol)
             {
                 throw new ArgumentException("I do not need more swords!");
             }
