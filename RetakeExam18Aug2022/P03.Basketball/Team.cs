@@ -7,81 +7,86 @@ namespace Basketball
 {
     public class Team
     {
-        private ICollection<Player> players;
+        private List<Player> players;
 
-        public Team(string name, int openPosition, char group)
+        public Team(string name, int openPositions, char group)
         {
             this.Name = name;
-            this.OpenPosition = openPosition;
+            this.OpenPositions = openPositions;
             this.Group = group;
 
             this.players = new List<Player>();
         }
 
         public string Name { get; set; }
-        public int OpenPosition { get; set; }
+        public int OpenPositions { get; set; }
         public char Group { get; set; }
 
-       public int Count
-            => this.players.Count;
-       public string AddPlayer(Player player)
+        public int Count
+             => this.players.Count;
+        public string AddPlayer(Player player)
         {
-            if (!string.IsNullOrEmpty(player.Name) &&
-               !string.IsNullOrEmpty(player.Position))
+            if (this.OpenPositions <= 0)
             {
-                if (this.OpenPosition == 0)
-                {
-                    return "There are no more open positions.";
-                }
-                else if (player.Rating < 80)
-                {
-                    return "Invalid player's rating.";
-                }
-                this.players.Add(player);
-                this.OpenPosition--;
-                return $"Successfully added {player.Name} to the team. Remaining open positions: {this.OpenPosition}.";
+                return "There are no more open positions.";
             }
-            return "Invalid player's information.";
+            if (string.IsNullOrEmpty(player.Name) ||
+                     string.IsNullOrEmpty(player.Position))
+            {
+                return "Invalid player's information.";
+            }
+            if (player.Rating < 80)
+            {
+                return "Invalid player's rating.";
+            }
+
+            this.players.Add(player);
+            this.OpenPositions--;
+            return $"Successfully added {player.Name} to the team. Remaining open positions: {this.OpenPositions}.";
+
+
         }
-       public bool RemovePlayer(string name)
+        public bool RemovePlayer(string name)
         {
             bool isThere = false;
             Player playerToRemove = this.players.FirstOrDefault(p => p.Name == name);
             if (playerToRemove != null)
             {
                 this.players.Remove(playerToRemove);
-                this.OpenPosition++;
+                this.OpenPositions++;
                 isThere = true;
             }
             return isThere;
         }
-       public int RemovePlayerByPosition(string position)
+        public int RemovePlayerByPosition(string position)
         {
             var playersToRemove = this.players.Where(p => p.Position == position).ToList();
-            this.OpenPosition -= playersToRemove.Count;
+            foreach (var player in playersToRemove)
+            {
+                this.players.Remove(player);
+                this.OpenPositions++;
+            }
             return playersToRemove.Count;
         }
-       public Player RetirePlayer(string name)
+        public Player RetirePlayer(string name)
         {
-            Player playerToRetire = this.players.FirstOrDefault(p => p.Name == name);
-            if (playerToRetire != null)
+            Player playerToRetire = this.players.Where(p => p.Name == name).FirstOrDefault();
+            if (playerToRetire == null)
             {
-                playerToRetire.Retired = true;
+                return null;
             }
+
+            playerToRetire.Retired = true;
             return playerToRetire;
         }
-       public List<Player> AwardPlayer(int games)
-        {
-            var playersToAward = this.players.Where(p => p.Games > games).ToList();
-            return playersToAward;
-        }
-       public string Report()
+        public List<Player> AwardPlayer(int games)
+            => this.players.FindAll(p => p.Games >= games).ToList();
+
+        public string Report()
         {
             var sb = new StringBuilder();
 
-            HashSet<Player> notRetiredPlayers = this.players
-                .Where(p => p.Retired == false)
-                .ToHashSet();
+            HashSet<Player> notRetiredPlayers = new HashSet<Player>();
             foreach (var player in this.players)
             {
                 if (player.Retired == false)
@@ -91,9 +96,9 @@ namespace Basketball
             }
             sb
                 .AppendLine($"Active players competing for Team {this.Name} from Group {this.Group}:")
-                .Append(string.Join(Environment.NewLine, notRetiredPlayers));
+                .AppendLine(string.Join(Environment.NewLine, notRetiredPlayers));
 
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
     }
 }
