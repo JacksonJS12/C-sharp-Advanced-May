@@ -1,4 +1,4 @@
-# C-sharp-Advanced-May-solutions
+# C# Advanced May solutions
 C# Advanced May-June 2022
 
 [Software University course](https://softuni.bg/trainings/3699/csharp-advanced-may-2022) - Exercises and Solutions
