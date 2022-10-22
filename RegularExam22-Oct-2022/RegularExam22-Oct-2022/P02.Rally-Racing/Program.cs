@@ -82,9 +82,9 @@ namespace P02.Rally_Racing
         }
 
         static void FillTheMatrix(int n, char[,] matrix)
-        {
-            for (int r = 0; r < n; r++)
+        {            for (int r = 0; r < n; r++)
             {
+                
                 char[] line = Console.ReadLine()
                     .Split()
                     .Select(char.Parse)
