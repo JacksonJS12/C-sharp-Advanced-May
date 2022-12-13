@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace P03.The_Race
+namespace P01.The_Fight_for_Gondor
 {
     internal class Program
     {
@@ -20,8 +19,7 @@ namespace P03.The_Race
             {
                 var currWave = Console.ReadLine()
                     .Split()
-                    .Select(int.Parse)
-                    .ToList();
+                    .Select(int.Parse);
 
                 foreach (var orc in currWave)
                 {
@@ -60,7 +58,7 @@ namespace P03.The_Race
                 }
             }
 
-            if (plates.Count >= 0)
+            if (plates.Count > 0)
             {
                 Console.WriteLine("The people successfully repulsed the orc's attack.");
                 Console.WriteLine($"Plates left: {string.Join(", ", plates)}");

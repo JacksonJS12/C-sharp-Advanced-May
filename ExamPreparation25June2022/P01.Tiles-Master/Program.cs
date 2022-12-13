@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace P02.Warships
+namespace P01.Tiles_Master
 {
     internal class Program
     {
